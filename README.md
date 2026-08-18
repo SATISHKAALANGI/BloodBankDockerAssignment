@@ -127,3 +127,4 @@ docker run -d -p 8080:80 --name bloodbank-container bloodbank-app:v1
 
 This project is created strictly for academic demonstration and lab assignments.
 All rights reserved © 2026 PulseCare Academic Initiative.
+Version 1.1: Added donor registration feature branch update.
