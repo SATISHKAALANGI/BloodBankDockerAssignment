@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blood Bank and Organ Donation Coordination Platform - Connecting donors with hospitals and patients in real-time.">
+    <title>Blood Bank & Organ Donation Coordination Platform</title>
+    
+    <!-- Google Fonts for Modern Healthcare Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- HEADER & NAVIGATION                        -->
+    <!-- ========================================== -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="brand-name">PulseCare</span>
+                    <span class="brand-sub">Coordination Platform</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#availability" class="nav-link">Blood Inventory</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-primary" id="navRegisterBtn">Register Donor</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- HERO SECTION                               -->
+    <!-- ========================================== -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge-pill">
+                    <span class="badge-dot"></span> 24/7 Emergency Dispatch Available
+                </div>
+                <h1 class="hero-title">
+                    Blood Bank and Organ Donation Coordination Platform
+                </h1>
+                <p class="hero-description">
+                    Connecting life-savers with emergency rooms and patients in real-time. Our unified platform bridges donors, blood banks, and hospitals to accelerate critical healthcare response times.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" id="heroRegisterBtn">
+                        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="20" y1="8" x2="20" y2="14"></line>
+                            <line x1="23" y1="11" x2="17" y2="11"></line>
+                        </svg>
+                        Register as Donor
+                    </button>
+                    <a href="#availability" class="btn btn-secondary btn-lg">
+                        <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Find Blood
+                    </a>
+                </div>
+
+                <!-- Trust Stats Row -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15,400+</span>
+                        <span class="stat-label">Active Donors</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">120+</span>
+                        <span class="stat-label">Partner Hospitals</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">&lt; 15 mins</span>
+                        <span class="stat-label">Avg Response Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Graphic Card -->
+            <div class="hero-visual">
+                <div class="card visual-card">
+                    <div class="visual-header">
+                        <div class="status-indicator">
+                            <span class="pulse-ring"></span>
+                            <span class="pulse-dot"></span>
+                            <span>Live Network Status</span>
+                        </div>
+                        <span class="status-badge">Operational</span>
+                    </div>
+                    <div class="visual-body">
+                        <div class="live-item">
+                            <div class="live-icon blood-bg">A+</div>
+                            <div class="live-info">
+                                <strong>City General Hospital</strong>
+                                <span>14 Units Available &bull; Urgent Need: O-</span>
+                            </div>
+                            <span class="live-time">2 mins ago</span>
+                        </div>
+                        <div class="live-item">
+                            <div class="live-icon organ-bg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                            <div class="live-info">
+                                <strong>Kidney Donor Match</strong>
+                                <span>Organ Registry Match Verified</span>
+                            </div>
+                            <span class="live-time">12 mins ago</span>
+                        </div>
+                        <div class="live-item">
+                            <div class="live-icon blood-bg">O-</div>
+                            <div class="live-info">
+                                <strong>St. Jude Trauma Center</strong>
+                                <span>Emergency Dispatch Transit</span>
+                            </div>
+                            <span class="live-time">25 mins ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FEATURES SECTION (4 CARDS)                 -->
+    <!-- ========================================== -->
+    <section id="features" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Core Capabilities</span>
+                <h2 class="section-title">Platform Features</h2>
+                <p class="section-desc">Designed to facilitate rapid response, donor verification, and seamless hospital communication.</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- Card 1: Donor Registration -->
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <polyline points="17 11 19 13 23 9"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-card-title">Donor Registration</h3>
+                    <p class="feature-card-text">
+                        Simple registration flow for blood and organ donors. Keep track of medical eligibility, donation history, and optional organ donation pledge.
+                    </p>
+                    <a href="#register" class="feature-link register-trigger">Sign up as donor &rarr;</a>
+                </div>
+
+                <!-- Card 2: Blood Availability -->
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-card-title">Blood Availability</h3>
+                    <p class="feature-card-text">
+                        Real-time tracking of blood units categorized by blood type (A+, A-, B+, B-, AB+, AB-, O+, O-) across regional blood banks and clinics.
+                    </p>
+                    <a href="#availability" class="feature-link">View live inventory &rarr;</a>
+                </div>
+
+                <!-- Card 3: Emergency Requests -->
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="feature-card-title">Emergency Requests</h3>
+                    <p class="feature-card-text">
+                        High-priority alert system triggering immediate SMS and push notifications to compatible nearby donors when urgent blood or organ matches are needed.
+                    </p>
+                    <a href="#contact" class="feature-link">Request emergency support &rarr;</a>
+                </div>
+
+                <!-- Card 4: Hospital Coordination -->
+                <div class="card feature-card">
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="feature-card-title">Hospital Coordination</h3>
+                    <p class="feature-card-text">
+                        Direct inter-hospital communication hub for rapid inter-facility blood transfer, organ transportation logistics, and emergency verification.
+                    </p>
+                    <a href="#about" class="feature-link">Learn network protocols &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- BLOOD INVENTORY SEARCH (REALISTIC DEMO)    -->
+    <!-- ========================================== -->
+    <section id="availability" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Real-Time Search</span>
+                <h2 class="section-title">Check Blood Availability</h2>
+                <p class="section-desc">Search for available blood units by group across local partner blood banks.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="inventory-controls">
+                <div class="filter-group">
+                    <label for="bloodTypeSelect">Select Blood Group:</label>
+                    <select id="bloodTypeSelect" class="form-select">
+                        <option value="all">All Groups (A+, A-, B+, B-, O+, O-, AB+, AB-)</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O- (Universal Donor)</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="hospitalSearchInput" class="form-input" placeholder="Search hospital name or city...">
+                </div>
+            </div>
+
+            <!-- Inventory Cards Grid -->
+            <div class="inventory-grid" id="inventoryGrid">
+                <div class="inventory-card" data-blood="O-" data-hospital="City General Hospital">
+                    <div class="blood-badge critical">O-</div>
+                    <div class="inventory-details">
+                        <h4>City General Hospital</h4>
+                        <p class="location-text">Central Medical Hub, District 4</p>
+                        <div class="stock-info">
+                            <span class="units-count">18 Units</span>
+                            <span class="status-pill status-high">Available</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm request-btn">Request Transfer</button>
+                </div>
+
+                <div class="inventory-card" data-blood="A+" data-hospital="St. Jude Trauma Center">
+                    <div class="blood-badge">A+</div>
+                    <div class="inventory-details">
+                        <h4>St. Jude Trauma Center</h4>
+                        <p class="location-text">North Medical Plaza</p>
+                        <div class="stock-info">
+                            <span class="units-count">42 Units</span>
+                            <span class="status-pill status-high">Available</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm request-btn">Request Transfer</button>
+                </div>
+
+                <div class="inventory-card" data-blood="B+" data-hospital="Metropolitan Health Bank">
+                    <div class="blood-badge">B+</div>
+                    <div class="inventory-details">
+                        <h4>Metropolitan Health Bank</h4>
+                        <p class="location-text">East Wing Healthcare Complex</p>
+                        <div class="stock-info">
+                            <span class="units-count">25 Units</span>
+                            <span class="status-pill status-high">Available</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm request-btn">Request Transfer</button>
+                </div>
+
+                <div class="inventory-card" data-blood="AB-" data-hospital="University Children's Hospital">
+                    <div class="blood-badge rare">AB-</div>
+                    <div class="inventory-details">
+                        <h4>University Children's Hospital</h4>
+                        <p class="location-text">Campus Health Station</p>
+                        <div class="stock-info">
+                            <span class="units-count">4 Units</span>
+                            <span class="status-pill status-low">Low Stock</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm request-btn">Request Transfer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ABOUT SECTION                              -->
+    <!-- ========================================== -->
+    <section id="about" class="section bg-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-subtitle">Our Purpose</span>
+                    <h2 class="section-title">Bridging the Gap in Critical Healthcare Logistics</h2>
+                    <p class="about-p">
+                        The <strong>Blood Bank and Organ Donation Coordination Platform</strong> was established to eliminate communication delays between voluntary donors, blood banks, and hospital surgical units.
+                    </p>
+                    <p class="about-p">
+                        In medical emergencies, every minute counts. Traditional manual requests cause critical bottlenecks. Our platform centralizes live inventory data, automates donor notification matching, and upholds transparent organ donation registries under standard health protocols.
+                    </p>
+
+                    <div class="about-features-list">
+                        <div class="list-item">
+                            <div class="check-icon">&#10003;</div>
+                            <div>
+                                <strong>Standardized Organ Registry</strong>
+                                <p>Secure donor opt-in verification aligned with medical ethics guidelines.</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="check-icon">&#10003;</div>
+                            <div>
+                                <strong>Real-time Cold Chain & Inventory Alerts</strong>
+                                <p>Ensuring blood unit viability and rapid cold-chain transport tracking.</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="check-icon">&#10003;</div>
+                            <div>
+                                <strong>Open Source Healthcare Project</strong>
+                                <p>Built for college software engineering demonstration with Git & Docker containerization readiness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-card-box">
+                    <div class="card summary-card">
+                        <h3>Mission Statement</h3>
+                        <blockquote class="mission-quote">
+                            "To build a transparent, rapid-dispatch network that ensures no patient suffers due to delayed blood supply or organ availability."
+                        </blockquote>
+                        <div class="quote-author">
+                            <strong>PulseCare Academic Initiative</strong>
+                            <span>Software Engineering Lab Assignment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- CONTACT SECTION                            -->
+    <!-- ========================================== -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get in Touch</span>
+                <h2 class="section-title">Contact & Emergency Coordination</h2>
+                <p class="section-desc">Reach out for platform queries, hospital onboarding, or emergency dispatch assistance.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Info Cards -->
+                <div class="contact-info">
+                    <div class="card contact-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Emergency Hotline</h4>
+                            <p>+1 (800) 555-BLOOD (25663)</p>
+                            <p>+1 (800) 555-ORGAN (67426)</p>
+                        </div>
+                    </div>
+
+                    <div class="card contact-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email Enquiries</h4>
+                            <p>support@pulsecare-coordination.org</p>
+                            <p>emergency@pulsecare-coordination.org</p>
+                        </div>
+                    </div>
+
+                    <div class="card contact-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>100 Health Tech Quadrangle, Suite 400</p>
+                            <p>Medical District, University City, State 90210</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="card contact-form-card">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm" onsubmit="event.preventDefault(); alert('Thank you for contacting PulseCare Platform! Our team will respond shortly.');">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="e.g. Dr. Sarah Jenkins" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="name@hospital.org" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactRole">Role / Purpose</label>
+                            <select id="contactRole" class="form-select">
+                                <option value="donor">Voluntary Donor Enquiry</option>
+                                <option value="hospital">Hospital Onboarding</option>
+                                <option value="bloodbank">Blood Bank Network Integration</option>
+                                <option value="student">Student / Academic Review</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" class="form-input form-textarea" rows="4" placeholder="How can we assist you?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- DONOR REGISTRATION MODAL                   -->
+    <!-- ========================================== -->
+    <div class="modal-overlay" id="donorModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <div class="modal-header">
+                <div class="logo-icon-modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    </svg>
+                </div>
+                <h3>Donor Registration Form</h3>
+                <p>Join the PulseCare life-saving network</p>
+            </div>
+            <form id="donorForm">
+                <div class="form-group">
+                    <label for="donorFullName">Full Name *</label>
+                    <input type="text" id="donorFullName" class="form-input" placeholder="e.g. Alex Morgan" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="donorBloodGroup">Blood Group *</label>
+                        <select id="donorBloodGroup" class="form-select" required>
+                            <option value="">Select...</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label for="donorAge">Age *</label>
+                        <input type="number" id="donorAge" class="form-input" min="18" max="65" placeholder="18-65" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="donorPhone">Contact Phone *</label>
+                    <input type="tel" id="donorPhone" class="form-input" placeholder="+1 (555) 000-0000" required>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="organPledge" class="form-checkbox">
+                    <label for="organPledge">Opt-in for Organ Donation Pledge (Optional)</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit Registration</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FOOTER                                     -->
+    <!-- ========================================== -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    </svg>
+                    <span class="brand-name white-text">PulseCare</span>
+                </div>
+                <p class="footer-tagline">Blood Bank and Organ Donation Coordination Platform.</p>
+                <p class="assignment-tag">College Git & Docker Assignment &bull; Static Web Application</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
+                <a href="#availability">Blood Inventory</a>
+                <a href="#about">About Platform</a>
+                <a href="#contact">Contact Support</a>
+            </div>
+
+            <div class="footer-legal">
+                <h4>Academic Project</h4>
+                <p>Designed strictly for educational assignment demonstration.</p>
+                <p>No actual medical emergency requests are processed by this static site preview.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-content">
+                <p>&copy; 2026 Blood Bank and Organ Donation Coordination Platform. All Rights Reserved.</p>
+                <p class="repo-note">Repository Structure: <code>BloodBankDockerAssignment/app/</code></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script file -->
+    <script src="script.js"></script>
+</body>
+</html>
