@@ -1,0 +1,7 @@
+services:
+  bloodbank-web:
+    image: bloodbank-app
+    container_name: bloodbank-web
+    ports:
+      - "8080:80"
+    restart: unless-stopped
