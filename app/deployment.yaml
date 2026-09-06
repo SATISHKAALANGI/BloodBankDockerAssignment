@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bloodbank-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: bloodbank
+
+  template:
+    metadata:
+      labels:
+        app: bloodbank
+
+    spec:
+      containers:
+        - name: bloodbank
+          image: satishkaalangi/bloodbank-app:1.0
+          ports:
+            - containerPort: 80

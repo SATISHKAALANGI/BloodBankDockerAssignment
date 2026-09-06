@@ -1,49 +1,90 @@
 /* ==========================================================================
-   Blood Bank and Organ Donation Coordination Platform
-   College Git & Docker Assignment - Stylesheet
-   Theme: Professional Healthcare (Crimson Red, Rose Light, Pure White, Slate)
+   Blood Bank and Organ Donation Coordination Platform (PulseCare)
+   Theme: Professional Healthcare Design System
+   Palette: Pure White & Slate BG, Crimson Red (#C62828) Primary, Dark Navy Text
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. CSS VARIABLES & DESIGN TOKENS
    -------------------------------------------------------------------------- */
 :root {
-    --primary-red: #D32F2F;
-    --primary-red-hover: #B71C1C;
-    --primary-red-light: #FFEBEE;
-    --primary-red-border: #FFCDD2;
-    
-    --secondary-accent: #C2185B;
-    --dark-slate: #0F172A;
-    --text-primary: #1E293B;
-    --text-secondary: #64748B;
+    /* Healthcare Brand Palette */
+    --primary-red: #0e0909;
+    --primary-red-hover: #981F1F;
+    --primary-red-dark: #7F1D1D;
+    --primary-red-light: #FEE2E2;
+    --primary-red-border: #FECACA;
+    --primary-red-glow: rgba(198, 40, 40, 0.15);
+
+    /* Secondary & Dark Tones */
+    --navy-dark: #0F172A;
+    --navy-surface: #1E293B;
+    --navy-light: #334155;
+
+    /* Text Colors */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
     --text-muted: #94A3B8;
-    
-    --bg-main: #c34e9c;
+    --text-on-dark: #FFFFFF;
+
+    /* Neutral & Background Tones (Clean White & Slate) */
+    --bg-page: #FFFFFF;
+    --bg-surface: #FFFFFF;
     --bg-alt: #F8FAFC;
-    --bg-card: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --bg-dark: #0F172A;
+
+    /* Status Indicators */
+    --success-green: #15803D;
+    --success-light: #DCFCE7;
+    --success-border: #86EFAC;
     
+    --warning-amber: #B45309;
+    --warning-light: #FEF3C7;
+    --warning-border: #FDE68A;
+    
+    --danger-red: #DC2626;
+    --danger-light: #FEE2E2;
+    --danger-border: #FCA5A5;
+
+    --info-blue: #0284C7;
+    --info-light: #E0F2FE;
+    --info-border: #BAE6FD;
+
+    --organ-purple: #7E22CE;
+    --organ-light: #F3E8FF;
+    --organ-border: #D8B4FE;
+
+    /* Borders & Shadows */
     --border-color: #E2E8F0;
+    --border-color-dark: #CBD5E1;
+    --border-radius-xs: 6px;
     --border-radius-sm: 8px;
-    --border-radius-md: 14px;
-    --border-radius-lg: 20px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 18px;
+    --border-radius-xl: 24px;
     --border-radius-full: 9999px;
-    
-    --box-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
-    --box-shadow-md: 0 10px 25px -5px rgba(211, 47, 47, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-    --box-shadow-lg: 0 20px 35px -10px rgba(211, 47, 47, 0.12), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
-    
-    --transition-fast: all 0.2s ease-in-out;
-    --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    --max-width: 1200px;
-    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px 0 rgba(15, 23, 42, 0.04), 0 1px 2px 0 rgba(15, 23, 42, 0.02);
+    --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+    --shadow-xl: 0 20px 32px -6px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.04);
+    --shadow-red: 0 8px 20px -4px rgba(198, 40, 40, 0.25);
+
+    /* Transitions & Layout */
+    --transition-fast: all 0.15s ease-in-out;
+    --transition-normal: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --max-width: 1240px;
+    --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
    2. RESET & BASE STYLES
    -------------------------------------------------------------------------- */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -52,26 +93,37 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     font-family: var(--font-family);
-    background-color: var(--bg-main);
+    background-color: var(--bg-page);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+    transition: var(--transition-fast);
 }
 
 button, input, select, textarea {
     font-family: inherit;
     font-size: inherit;
+    color: inherit;
 }
 
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Container & Sections */
 .container {
     width: 100%;
     max-width: var(--max-width);
@@ -81,105 +133,158 @@ button, input, select, textarea {
 
 .section {
     padding: 5rem 0;
+    position: relative;
+}
+
+.section-sm {
+    padding: 3rem 0;
 }
 
 .bg-light {
     background-color: var(--bg-alt);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* --------------------------------------------------------------------------
-   3. TYPOGRAPHY & BUTTONS
-   -------------------------------------------------------------------------- */
+.bg-subtle {
+    background-color: var(--bg-subtle);
+}
+
+.bg-dark {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+}
+
+/* Section Header Typography */
 .section-header {
     text-align: center;
-    max-width: 680px;
+    max-width: 720px;
     margin: 0 auto 3.5rem auto;
 }
 
 .section-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--primary-red);
+    font-size: 0.85rem;
     font-weight: 700;
-    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    display: inline-block;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--primary-red-light);
+    border-radius: var(--border-radius-full);
 }
 
 .section-title {
     font-size: 2.25rem;
     font-weight: 800;
-    color: var(--dark-slate);
+    color: var(--text-primary);
     line-height: 1.25;
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
 .section-desc {
+    font-size: 1.05rem;
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
-/* Buttons */
+/* --------------------------------------------------------------------------
+   3. BUTTONS & PILLS
+   -------------------------------------------------------------------------- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1.5rem;
+    gap: 0.5rem;
     font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.4rem;
     border-radius: var(--border-radius-sm);
-    transition: var(--transition-normal);
+    border: 1px solid transparent;
     cursor: pointer;
-    border: 2px solid transparent;
-    font-size: 1rem;
+    transition: var(--transition-normal);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 .btn-primary {
     background-color: var(--primary-red);
     color: #FFFFFF;
-    box-shadow: 0 4px 14px rgba(211, 47, 47, 0.3);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-red-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+    box-shadow: var(--shadow-red);
 }
 
 .btn-secondary {
-    background-color: #FFFFFF;
-    color: var(--text-primary);
-    border-color: var(--border-color);
-    box-shadow: var(--box-shadow-sm);
+    background-color: var(--navy-dark);
+    color: #FFFFFF;
 }
 
 .btn-secondary:hover {
-    border-color: var(--primary-red);
-    color: var(--primary-red);
-    transform: translateY(-2px);
-    box-shadow: var(--box-shadow-md);
+    background-color: var(--navy-surface);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
-    background: transparent;
-    border-color: var(--primary-red-border);
+    background-color: #FFFFFF;
     color: var(--primary-red);
+    border: 1.5px solid var(--primary-red);
 }
 
 .btn-outline:hover {
     background-color: var(--primary-red);
     color: #FFFFFF;
+    box-shadow: var(--shadow-sm);
 }
 
-.btn-lg {
-    padding: 0.9rem 2rem;
-    font-size: 1.05rem;
-    border-radius: var(--border-radius-md);
+.btn-ghost {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-ghost:hover {
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+}
+
+.btn-emergency {
+    background-color: var(--danger-red);
+    color: #FFFFFF;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    animation: pulse-border 2s infinite;
+}
+
+.btn-emergency:hover {
+    background-color: #B91C1C;
 }
 
 .btn-sm {
-    padding: 0.4rem 0.9rem;
-    font-size: 0.875rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    border-radius: var(--border-radius-xs);
+}
+
+.btn-lg {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+    border-radius: var(--border-radius-md);
 }
 
 .btn-block {
@@ -187,54 +292,147 @@ button, input, select, textarea {
 }
 
 .btn-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
-/* Cards Base */
-.card {
-    background-color: var(--bg-card);
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--box-shadow-sm);
-    transition: var(--transition-normal);
+/* Status Badges & Pills */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--border-radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
-.card:hover {
-    box-shadow: var(--box-shadow-md);
+.status-high, .status-available, .status-operational {
+    background-color: var(--success-light);
+    color: var(--success-green);
+    border: 1px solid var(--success-border);
+}
+
+.status-low, .status-pending {
+    background-color: var(--warning-light);
+    color: var(--warning-amber);
+    border: 1px solid var(--warning-border);
+}
+
+.status-critical, .status-unavailable, .status-urgent {
+    background-color: var(--danger-light);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-border);
+}
+
+.status-info, .status-matched, .status-searching {
+    background-color: var(--info-light);
+    color: var(--info-blue);
+    border: 1px solid var(--info-border);
+}
+
+.status-organ {
+    background-color: var(--organ-light);
+    color: var(--organ-purple);
+    border: 1px solid var(--organ-border);
 }
 
 /* --------------------------------------------------------------------------
-   4. HEADER & NAVIGATION
+   4. EMERGENCY ANNOUNCEMENT TICKER
+   -------------------------------------------------------------------------- */
+.emergency-top-bar {
+    background-color: #991B1B;
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid #7F1D1D;
+}
+
+.emergency-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.emergency-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    background-color: #DC2626;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--border-radius-xs);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.emergency-text {
+    flex: 1;
+    color: #FEE2E2;
+    font-weight: 500;
+}
+
+.emergency-text strong {
+    color: #FFFFFF;
+}
+
+.emergency-link {
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   5. HEADER & NAVIGATION
    -------------------------------------------------------------------------- */
 .header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    padding: 0.9rem 0;
+    box-shadow: var(--shadow-xs);
+    transition: var(--transition-normal);
 }
 
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 4.5rem;
 }
 
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    cursor: pointer;
+}
+
+.logo-icon-wrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, var(--primary-red) 0%, #991B1B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
 }
 
 .logo-icon {
-    width: 34px;
-    height: 34px;
-    color: var(--primary-red);
-    filter: drop-shadow(0 2px 6px rgba(211, 47, 47, 0.4));
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .logo-text {
@@ -245,75 +443,109 @@ button, input, select, textarea {
 .brand-name {
     font-size: 1.25rem;
     font-weight: 800;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
     line-height: 1.1;
     letter-spacing: -0.02em;
+}
+
+.brand-name .accent {
+    color: var(--primary-red);
 }
 
 .brand-sub {
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
 }
 
+/* Navigation Links */
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 .nav-link {
+    font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-xs);
     transition: var(--transition-fast);
-    position: relative;
-    padding: 0.4rem 0;
+    white-space: nowrap;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
     color: var(--primary-red);
+    background-color: var(--primary-red-light);
 }
 
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-red);
-    border-radius: var(--border-radius-full);
+.nav-link.active {
+    color: var(--primary-red);
+    background-color: var(--primary-red-light);
+    font-weight: 700;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--navy-dark);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--border-radius-xs);
+}
+
+.mobile-toggle:hover {
+    background-color: var(--bg-subtle);
 }
 
 /* --------------------------------------------------------------------------
-   5. HERO SECTION
+   6. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero-section {
-    padding: 4.5rem 0 5.5rem 0;
-    background: radial-gradient(circle at 90% 10%, rgba(211, 47, 47, 0.05) 0%, transparent 60%),
-                radial-gradient(circle at 10% 90%, rgba(211, 47, 47, 0.03) 0%, transparent 50%);
-    overflow: hidden;
+    position: relative;
+    padding: 4.5rem 0 5rem 0;
+    background: radial-gradient(circle at 10% 20%, rgba(198, 40, 40, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.03) 0%, transparent 40%),
+                #FFFFFF;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.2fr 0.95fr;
     gap: 3.5rem;
     align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .badge-pill {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.35rem 0.9rem;
     background-color: var(--primary-red-light);
-    border: 1px solid var(--primary-red-border);
-    border-radius: var(--border-radius-full);
-    color: var(--primary-red);
-    font-size: 0.85rem;
+    color: var(--primary-red-dark);
+    font-size: 0.82rem;
     font-weight: 700;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--border-radius-full);
+    border: 1px solid var(--primary-red-border);
     margin-bottom: 1.5rem;
 }
 
@@ -322,38 +554,47 @@ button, input, select, textarea {
     height: 8px;
     background-color: var(--primary-red);
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    animation: blink 1.5s infinite;
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 800;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     margin-bottom: 1.25rem;
+}
+
+.hero-title .highlight {
+    color: var(--primary-red);
+    position: relative;
 }
 
 .hero-description {
     font-size: 1.15rem;
     color: var(--text-secondary);
-    margin-bottom: 2.25rem;
-    max-width: 540px;
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    max-width: 580px;
 }
 
 .hero-buttons {
     display: flex;
+    align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
+/* Stats Row */
 .hero-stats {
     display: flex;
     align-items: center;
     gap: 1.75rem;
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     border-top: 1px solid var(--border-color);
+    width: 100%;
 }
 
 .stat-item {
@@ -362,78 +603,88 @@ button, input, select, textarea {
 }
 
 .stat-number {
-    font-size: 1.4rem;
+    font-size: 1.75rem;
     font-weight: 800;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .stat-label {
-    font-size: 0.825rem;
-    color: var(--text-secondary);
-    font-weight: 500;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-top: 0.25rem;
 }
 
 .stat-divider {
     width: 1px;
-    height: 35px;
+    height: 2.5rem;
     background-color: var(--border-color);
 }
 
-/* Hero Visual Card */
+/* Hero Visual Card (Telemetry Dashboard) */
+.hero-visual {
+    position: relative;
+}
+
 .visual-card {
-    padding: 1.5rem;
-    border-color: rgba(211, 47, 47, 0.15);
-    box-shadow: var(--box-shadow-lg);
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F6 100%);
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    transition: var(--transition-normal);
 }
 
 .visual-header {
+    background-color: var(--bg-alt);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1.25rem;
 }
 
 .status-indicator {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
+}
+
+.pulse-ring-container {
     position: relative;
+    width: 10px;
+    height: 10px;
 }
 
 .pulse-ring {
     position: absolute;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    background-color: rgba(34, 197, 94, 0.4);
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    animation: ripple 1.6s infinite ease-out;
+    background-color: var(--success-green);
+    opacity: 0.75;
+    animation: ring-expand 1.5s infinite ease-out;
 }
 
 .pulse-dot {
+    position: absolute;
     width: 8px;
     height: 8px;
-    background-color: #22C55E;
+    top: 1px;
+    left: 1px;
+    background-color: var(--success-green);
     border-radius: 50%;
-    margin-left: 2px;
-}
-
-.status-badge {
-    background-color: #DCFCE7;
-    color: #15803D;
-    font-weight: 700;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--border-radius-full);
 }
 
 .visual-body {
+    padding: 1.25rem 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -443,263 +694,1041 @@ button, input, select, textarea {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.85rem;
-    background-color: #FFFFFF;
-    border-radius: var(--border-radius-sm);
+    padding: 0.85rem 1rem;
+    background-color: var(--bg-alt);
     border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-fast);
+}
+
+.live-item:hover {
+    border-color: var(--primary-red-border);
+    background-color: #FFFFFF;
+    box-shadow: var(--shadow-sm);
 }
 
 .live-icon {
-    width: 42px;
-    height: 42px;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: var(--border-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     font-size: 1rem;
+    flex-shrink: 0;
 }
 
 .blood-bg {
     background-color: var(--primary-red-light);
     color: var(--primary-red);
+    border: 1px solid var(--primary-red-border);
 }
 
 .organ-bg {
-    background-color: #FCE7F3;
-    color: var(--secondary-accent);
+    background-color: var(--organ-light);
+    color: var(--organ-purple);
+    border: 1px solid var(--organ-border);
 }
 
 .live-info {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
 .live-info strong {
-    font-size: 0.925rem;
-    color: var(--dark-slate);
+    font-size: 0.92rem;
+    color: var(--navy-dark);
+    font-weight: 700;
 }
 
 .live-info span {
-    font-size: 0.775rem;
+    font-size: 0.78rem;
     color: var(--text-secondary);
 }
 
 .live-time {
-    font-size: 0.725rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: 600;
+    white-space: nowrap;
+}
+
+.visual-footer {
+    padding: 0.9rem 1.5rem;
+    background-color: var(--bg-alt);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.82rem;
+}
+
+.visual-footer a {
+    color: var(--primary-red);
+    font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
-   6. FEATURES SECTION (4 CARDS)
+   7. HOW IT WORKS SECTION
    -------------------------------------------------------------------------- */
-.features-grid {
+.how-it-works-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.75rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
 }
 
-.feature-card {
-    padding: 2rem;
+.step-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 1.5rem;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    align-items: flex-start;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: var(--transition-normal);
 }
 
-.feature-card:hover {
-    transform: translateY(-6px);
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
     border-color: var(--primary-red-border);
-    box-shadow: var(--box-shadow-lg);
 }
 
-.feature-icon-wrapper {
-    width: 52px;
-    height: 52px;
-    background-color: var(--primary-red-light);
+.step-number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--border-color-dark);
+    opacity: 0.6;
+}
+
+.step-icon-box {
+    width: 3.25rem;
+    height: 3.25rem;
     border-radius: var(--border-radius-md);
+    background-color: var(--primary-red-light);
+    color: var(--primary-red);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem;
 }
 
-.feature-icon {
-    width: 26px;
-    height: 26px;
+.step-icon-box svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.step-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.65rem;
+}
+
+.step-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   8. EMERGENCY BLOOD SECTION
+   -------------------------------------------------------------------------- */
+.emergency-section {
+    background-color: #FFF5F5;
+    border-top: 2px solid var(--danger-border);
+    border-bottom: 2px solid var(--danger-border);
+    padding: 4rem 0;
+}
+
+.emergency-container {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.emergency-cta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.emergency-badge-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--danger-red);
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--border-radius-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.emergency-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #7F1D1D;
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+}
+
+.emergency-desc {
+    font-size: 1rem;
+    color: #991B1B;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+}
+
+.emergency-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.emergency-card-item {
+    background-color: #FFFFFF;
+    border: 1px solid var(--danger-border);
+    border-left: 4px solid var(--danger-red);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.emergency-card-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.emergency-group-badge {
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: #FEE2E2;
+    color: var(--danger-red);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border: 1px solid var(--danger-border);
+}
+
+.emergency-req-info {
+    flex: 1;
+    margin: 0 1.25rem;
+}
+
+.emergency-req-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.emergency-req-info p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   9. FEATURES SECTION (8 CARDS)
+   -------------------------------------------------------------------------- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.feature-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-red-border);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon-wrapper {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--border-radius-md);
+    background-color: var(--primary-red-light);
     color: var(--primary-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: var(--transition-fast);
+}
+
+.feature-card:hover .feature-icon-wrapper {
+    background-color: var(--primary-red);
+    color: #FFFFFF;
+}
+
+.feature-icon {
+    width: 1.6rem;
+    height: 1.6rem;
 }
 
 .feature-card-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: var(--dark-slate);
-    margin-bottom: 0.75rem;
+    color: var(--navy-dark);
+    margin-bottom: 0.65rem;
 }
 
 .feature-card-text {
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    flex: 1;
 }
 
 .feature-link {
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--primary-red);
-    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     transition: var(--transition-fast);
 }
 
 .feature-link:hover {
     color: var(--primary-red-hover);
-    padding-left: 4px;
+    gap: 0.55rem;
 }
 
 /* --------------------------------------------------------------------------
-   7. LIVE INVENTORY SEARCH SECTION
+   10. WHY PULSECARE? SECTION (6 VALUE CARDS)
    -------------------------------------------------------------------------- */
-.inventory-controls {
-    display: flex;
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-    background-color: var(--bg-alt);
-    padding: 1.25rem;
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--border-color);
 }
 
-.filter-group, .search-group {
+.why-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    flex: 1;
-    min-width: 240px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
 }
 
-.filter-group label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-primary);
+.why-card:hover {
+    border-color: var(--navy-dark);
+    box-shadow: var(--shadow-md);
 }
 
-.form-select, .form-input {
-    padding: 0.7rem 1rem;
-    border: 1px solid var(--border-color);
+.why-icon-box {
+    width: 3rem;
+    height: 3rem;
     border-radius: var(--border-radius-sm);
-    outline: none;
+    background-color: var(--bg-subtle);
+    color: var(--navy-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.why-icon-box svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.why-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.5rem;
+}
+
+.why-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   11. BLOOD INVENTORY & SEARCH DASHBOARD
+   -------------------------------------------------------------------------- */
+.inventory-dashboard {
     background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.inventory-filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Blood Group Filter Buttons */
+.blood-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.blood-filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-full);
+    border: 1.5px solid var(--border-color);
+    background-color: #FFFFFF;
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
     transition: var(--transition-fast);
 }
 
-.form-select:focus, .form-input:focus {
-    border-color: var(--primary-red);
-    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+.blood-filter-btn:hover {
+    border-color: var(--primary-red-border);
+    color: var(--primary-red);
+    background-color: var(--primary-red-light);
 }
 
+.blood-filter-btn.active {
+    background-color: var(--primary-red);
+    color: #FFFFFF;
+    border-color: var(--primary-red);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Search & Dropdown Filters */
+.inventory-inputs-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.form-input, .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-sm);
+    border: 1.5px solid var(--border-color);
+    background-color: #FFFFFF;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    transition: var(--transition-fast);
+    outline: none;
+}
+
+.form-input:focus, .form-select:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px var(--primary-red-glow);
+}
+
+/* Inventory Grid */
 .inventory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
 .inventory-card {
     background-color: #FFFFFF;
     border: 1px solid var(--border-color);
-    border-radius: var(--border-radius-md);
-    padding: 1.25rem;
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
     display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    box-shadow: var(--box-shadow-sm);
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
     transition: var(--transition-normal);
+    position: relative;
 }
 
 .inventory-card:hover {
     border-color: var(--primary-red-border);
-    transform: translateY(-3px);
-    box-shadow: var(--box-shadow-md);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.card-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .blood-badge {
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-red);
-    color: #FFFFFF;
-    font-weight: 800;
-    font-size: 1.15rem;
-    border-radius: 50%;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--border-radius-md);
+    background-color: var(--primary-red-light);
+    color: var(--primary-red);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+    font-size: 1.35rem;
+    font-weight: 800;
+    border: 1px solid var(--primary-red-border);
 }
 
 .blood-badge.rare {
-    background-color: var(--secondary-accent);
+    background-color: #FEF3C7;
+    color: #B45309;
+    border-color: #FDE68A;
 }
 
-.inventory-details {
-    flex-grow: 1;
+.blood-badge.critical {
+    background-color: #FEE2E2;
+    color: #DC2626;
+    border-color: #FCA5A5;
 }
 
 .inventory-details h4 {
-    font-size: 0.975rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
+    margin-bottom: 0.35rem;
 }
 
 .location-text {
-    font-size: 0.775rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.stock-meter-box {
+    background-color: var(--bg-alt);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
 }
 
 .stock-info {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
 }
 
 .units-count {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--dark-slate);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--navy-dark);
 }
 
-.status-pill {
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
+.stock-progress {
+    width: 100%;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--success-green);
     border-radius: var(--border-radius-full);
 }
 
-.status-high {
-    background-color: #DCFCE7;
-    color: #15803D;
+.progress-fill.low {
+    background-color: var(--warning-amber);
 }
 
-.status-low {
-    background-color: #FEF3C7;
-    color: #B45309;
+.progress-fill.critical {
+    background-color: var(--danger-red);
+}
+
+.card-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.78rem;
+    color: var(--text-muted);
 }
 
 /* --------------------------------------------------------------------------
-   8. ABOUT SECTION
+   12. DONOR REGISTRATION SECTION
+   -------------------------------------------------------------------------- */
+.form-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: 2.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.form-group label span.req {
+    color: var(--primary-red);
+}
+
+.form-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.form-checkbox-label input[type="checkbox"] {
+    margin-top: 0.25rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-red);
+    cursor: pointer;
+}
+
+/* Success Banner */
+.success-banner {
+    display: none;
+    background-color: var(--success-light);
+    border: 1.5px solid var(--success-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    color: #064E3B;
+}
+
+.success-banner.active {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.success-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--success-green);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.success-content h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #064E3B;
+    margin-bottom: 0.25rem;
+}
+
+.success-content p {
+    font-size: 0.9rem;
+    color: #047857;
+}
+
+.donor-id-badge {
+    display: inline-block;
+    background-color: #064E3B;
+    color: #FFFFFF;
+    font-weight: 800;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--border-radius-xs);
+    margin-top: 0.5rem;
+    font-family: monospace;
+}
+
+/* --------------------------------------------------------------------------
+   13. ORGAN DONATION COORDINATION SECTION
+   -------------------------------------------------------------------------- */
+.organ-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.organ-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+}
+
+.organ-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--organ-border);
+    box-shadow: var(--shadow-lg);
+}
+
+.organ-icon-circle {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--organ-light);
+    color: var(--organ-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+
+.organ-card h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--navy-dark);
+    margin-bottom: 0.25rem;
+}
+
+.organ-time-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--organ-purple);
+    background-color: var(--organ-light);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--border-radius-full);
+    margin-bottom: 0.75rem;
+}
+
+.organ-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.organ-pledge-banner {
+    background: linear-gradient(135deg, #4C1D95 0%, #1E1B4B 100%);
+    border-radius: var(--border-radius-xl);
+    padding: 3rem;
+    color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    box-shadow: var(--shadow-xl);
+}
+
+.organ-banner-content h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+}
+
+.organ-banner-content p {
+    font-size: 1.05rem;
+    color: #DDD6FE;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+.organ-disclaimer {
+    font-size: 0.8rem;
+    color: #A78BFA;
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   14. HOSPITALS & BLOOD BANKS DIRECTORY
+   -------------------------------------------------------------------------- */
+.hospitals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.hospital-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+}
+
+.hospital-card:hover {
+    border-color: var(--navy-dark);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+}
+
+.hospital-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.hospital-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    line-height: 1.3;
+}
+
+.hospital-location {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.hospital-blood-groups {
+    margin-bottom: 1.25rem;
+}
+
+.blood-pill-sm {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    background-color: var(--primary-red-light);
+    color: var(--primary-red);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: var(--border-radius-xs);
+    margin: 0.15rem;
+}
+
+.hospital-features-list {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.hospital-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   15. DASHBOARDS (DONOR PROFILE & PATIENT REQUESTS VIEW)
+   -------------------------------------------------------------------------- */
+.dashboard-tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.dash-tab-btn {
+    padding: 0.85rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: var(--transition-fast);
+}
+
+.dash-tab-btn.active {
+    color: var(--primary-red);
+    border-bottom-color: var(--primary-red);
+}
+
+.dash-tab-content {
+    display: none;
+}
+
+.dash-tab-content.active {
+    display: block;
+}
+
+/* Donor Profile Widget */
+.donor-profile-box {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 2.5rem;
+}
+
+.donor-card-preview {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, #1E293B 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.donor-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.donor-blood-large {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-red-border);
+}
+
+.donor-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.donor-detail-item strong {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.donor-detail-item span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+/* Requests Table */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+}
+
+.data-table th {
+    background-color: var(--bg-alt);
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.data-table tr:hover td {
+    background-color: var(--bg-alt);
+}
+
+/* --------------------------------------------------------------------------
+   16. ABOUT & CONTACT SECTIONS
    -------------------------------------------------------------------------- */
 .about-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.2fr 0.9fr;
     gap: 3.5rem;
     align-items: center;
 }
 
 .about-p {
-    color: var(--text-secondary);
     font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
     margin-bottom: 1.25rem;
 }
 
@@ -707,78 +1736,50 @@ button, input, select, textarea {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
 }
 
 .list-item {
     display: flex;
-    gap: 1rem;
     align-items: flex-start;
+    gap: 1rem;
 }
 
 .check-icon {
-    width: 24px;
-    height: 24px;
-    background-color: var(--primary-red-light);
-    color: var(--primary-red);
-    font-weight: 800;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--success-light);
+    color: var(--success-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-weight: 800;
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
 .summary-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
     padding: 2.5rem;
-    background: linear-gradient(135deg, var(--dark-slate) 0%, #1E293B 100%);
-    color: #FFFFFF;
-    border: none;
-    box-shadow: var(--box-shadow-lg);
-}
-
-.summary-card h3 {
-    font-size: 1.25rem;
-    color: var(--primary-red-border);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    box-shadow: var(--shadow-lg);
 }
 
 .mission-quote {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    line-height: 1.5;
+    margin: 1.5rem 0;
     font-style: italic;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-    opacity: 0.95;
 }
 
-.quote-author {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 1rem;
-}
-
-.quote-author strong {
-    font-size: 1rem;
-    color: #FFFFFF;
-}
-
-.quote-author span {
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-/* --------------------------------------------------------------------------
-   9. CONTACT SECTION
-   -------------------------------------------------------------------------- */
+/* Contact Grid */
 .contact-grid {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
 }
 
 .contact-info {
@@ -788,18 +1789,22 @@ button, input, select, textarea {
 }
 
 .contact-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
     padding: 1.5rem;
     display: flex;
     align-items: flex-start;
     gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-icon-box {
-    width: 44px;
-    height: 44px;
+    width: 3rem;
+    height: 3rem;
     background-color: var(--primary-red-light);
     color: var(--primary-red);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -807,14 +1812,14 @@ button, input, select, textarea {
 }
 
 .contact-icon-box svg {
-    width: 22px;
-    height: 22px;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .contact-card h4 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
     margin-bottom: 0.25rem;
 }
 
@@ -824,35 +1829,22 @@ button, input, select, textarea {
 }
 
 .contact-form-card {
-    padding: 2.25rem;
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
 }
 
 .contact-form-card h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy-dark);
     margin-bottom: 1.5rem;
-    color: var(--dark-slate);
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
-}
-
-.form-group label {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.form-textarea {
-    resize: vertical;
 }
 
 /* --------------------------------------------------------------------------
-   10. MODAL POPUP (DONOR REGISTRATION)
+   17. MODAL DIALOGS
    -------------------------------------------------------------------------- */
 .modal-overlay {
     position: fixed;
@@ -861,35 +1853,38 @@ button, input, select, textarea {
     width: 100%;
     height: 100%;
     background-color: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2000;
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transition: var(--transition-normal);
+    padding: 1.5rem;
 }
 
 .modal-overlay.active {
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
 }
 
 .modal-card {
     background-color: #FFFFFF;
-    width: 90%;
-    max-width: 500px;
-    border-radius: var(--border-radius-lg);
-    padding: 2.25rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: var(--border-radius-xl);
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-xl);
     position: relative;
-    transform: translateY(20px);
+    transform: scale(0.95);
     transition: var(--transition-normal);
 }
 
 .modal-overlay.active .modal-card {
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 .modal-close {
@@ -902,6 +1897,7 @@ button, input, select, textarea {
     color: var(--text-muted);
     cursor: pointer;
     line-height: 1;
+    transition: var(--transition-fast);
 }
 
 .modal-close:hover {
@@ -909,198 +1905,312 @@ button, input, select, textarea {
 }
 
 .modal-header {
+    margin-bottom: 2rem;
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
 .logo-icon-modal {
-    width: 48px;
-    height: 48px;
+    width: 3.5rem;
+    height: 3.5rem;
     background-color: var(--primary-red-light);
     color: var(--primary-red);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0.75rem auto;
+    margin: 0 auto 1rem auto;
 }
 
 .modal-header h3 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    color: var(--dark-slate);
+    color: var(--navy-dark);
 }
 
 .modal-header p {
-    font-size: 0.875rem;
+    font-size: 0.92rem;
     color: var(--text-secondary);
 }
 
-.form-row {
+/* --------------------------------------------------------------------------
+   18. TOAST NOTIFICATION SYSTEM
+   -------------------------------------------------------------------------- */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 3000;
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    pointer-events: none;
 }
 
-.col {
-    flex: 1;
-}
-
-.checkbox-group {
-    flex-direction: row;
+.toast {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-lg);
+    display: flex;
     align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    min-width: 320px;
+    max-width: 420px;
+    pointer-events: auto;
+    animation: toast-slide 0.3s ease-out;
 }
 
-.form-checkbox {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--primary-red);
-    cursor: pointer;
+.toast.toast-success {
+    border-left: 4px solid var(--success-green);
 }
 
-.checkbox-group label {
-    font-size: 0.85rem;
+.toast.toast-emergency {
+    border-left: 4px solid var(--danger-red);
+}
+
+.toast-icon {
+    font-size: 1.25rem;
+}
+
+.toast-msg {
+    font-size: 0.88rem;
     font-weight: 600;
-    cursor: pointer;
+    color: var(--navy-dark);
+    line-height: 1.4;
 }
 
 /* --------------------------------------------------------------------------
-   11. FOOTER
+   19. FOOTER
    -------------------------------------------------------------------------- */
 .footer {
-    background-color: var(--dark-slate);
+    background-color: var(--navy-dark);
     color: #FFFFFF;
-    padding-top: 4rem;
+    padding: 4.5rem 0 0 0;
+    border-top: 1px solid var(--navy-surface);
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 3rem;
-    padding-bottom: 3rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--navy-surface);
 }
 
-.footer-brand .white-text {
-    color: #FFFFFF;
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.white-text {
+    color: #FFFFFF !important;
 }
 
 .footer-tagline {
+    color: #94A3B8;
     font-size: 0.95rem;
-    opacity: 0.8;
-    margin: 1rem 0 0.5rem 0;
+    line-height: 1.6;
 }
 
 .assignment-tag {
-    font-size: 0.8rem;
-    color: var(--primary-red-border);
-    font-weight: 600;
+    font-size: 0.78rem;
+    color: #64748B;
 }
 
 .footer-links h4, .footer-legal h4 {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 1.25rem;
     color: #FFFFFF;
+    margin-bottom: 1.25rem;
 }
 
 .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.65rem;
 }
 
 .footer-links a {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    transition: var(--transition-fast);
+    color: #94A3B8;
+    font-size: 0.88rem;
 }
 
 .footer-links a:hover {
-    color: #FFFFFF;
-    padding-left: 4px;
+    color: var(--primary-red-light);
+    transform: translateX(3px);
 }
 
 .footer-legal p {
+    color: #94A3B8;
     font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 0.6rem;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.25rem 0;
-    background-color: #090D16;
+    background-color: #0B1120;
+    padding: 1.5rem 0;
+    font-size: 0.82rem;
+    color: #64748B;
 }
 
 .footer-bottom-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 0.825rem;
-    color: var(--text-muted);
-    flex-wrap: wrap;
-    gap: 0.75rem;
+    justify-content: space-between;
 }
 
 .repo-note code {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    color: var(--primary-red-border);
+    background-color: var(--navy-surface);
+    color: #E2E8F0;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius-xs);
+    font-size: 0.78rem;
 }
 
 /* --------------------------------------------------------------------------
-   12. KEYFRAME ANIMATIONS & RESPONSIVE MEDIA QUERIES
+   20. KEYFRAME ANIMATIONS
    -------------------------------------------------------------------------- */
-@keyframes pulse {
+@keyframes ring-expand {
     0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+    70% { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(2.4); opacity: 0; }
 }
 
-@keyframes ripple {
-    0% { transform: scale(0.8); opacity: 1; }
-    100% { transform: scale(2.2); opacity: 0; }
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
 }
 
-/* Mobile & Tablet Responsiveness */
-@media (max-width: 992px) {
-    .hero-container, .about-grid, .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+@keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+}
+
+@keyframes toast-slide {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   21. RESPONSIVE MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .hero-title {
-        font-size: 2.4rem;
+    .how-it-works-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
+    .inventory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .organ-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
     .footer-container {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 868px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .emergency-container {
+        grid-template-columns: 1fr;
+    }
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+    .hospitals-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    .organ-pledge-banner {
+        grid-template-columns: 1fr;
+    }
+    .donor-profile-box {
+        grid-template-columns: 1fr;
+    }
+    .inventory-inputs-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Navigation Mobile Hamburger */
+    .mobile-toggle {
+        display: block;
+    }
     .nav-menu {
-        display: none; /* Can be expanded or kept simple for static view */
+        position: absolute;
+        top: 4.5rem;
+        left: 0;
+        width: 100%;
+        background-color: #FFFFFF;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        gap: 0.5rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-lg);
+        display: none;
     }
-    
+    .nav-menu.active {
+        display: flex;
+    }
+    .nav-link {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+    .nav-actions {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.25rem;
     }
-    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .how-it-works-grid {
+        grid-template-columns: 1fr;
+    }
+    .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+    .organ-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .form-grid-2, .form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .inventory-inputs-row {
+        grid-template-columns: 1fr;
+    }
     .hero-stats {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
-    
     .stat-divider {
         display: none;
     }
-    
     .footer-container {
         grid-template-columns: 1fr;
+    }
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
 }
